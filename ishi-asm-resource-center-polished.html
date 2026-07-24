@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore educational resources on the Ambulatory Specialty Model and how healthcare organizations can execute specialty care consistently between visits." />
+  <title>ASM Resource Center | ISHI Health</title>
+
+  <style>
+    :root{
+      --purple:#9966CB;
+      --purple-dark:#34174D;
+      --purple-mid:#6C3D8F;
+      --teal:#1B7D79;
+      --teal-light:#A7D8D5;
+      --ivory:#F9F7F0;
+      --warm:#F3EDE5;
+      --white:#FFFFFF;
+      --navy:#10203F;
+      --charcoal:#333333;
+      --muted:#6B6570;
+      --border:rgba(52,23,77,.12);
+      --shadow:0 18px 50px rgba(52,23,77,.10);
+      --shadow-soft:0 12px 34px rgba(52,23,77,.07);
+      --radius-lg:24px;
+      --radius-md:16px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--charcoal);
+      background:var(--ivory);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(249,247,240,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+    }
+    .logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+    .logo-img{height:46px;width:auto;max-width:150px}
+    .nav-links{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:600}
+    .nav-links a{text-decoration:none;color:var(--purple-dark)}
+
+    h1,h2,h3{margin:0;color:var(--purple-dark);line-height:1.08;letter-spacing:-.035em}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+    h1{font-size:clamp(46px,6vw,72px)}
+    h2{font-size:clamp(34px,4vw,50px)}
+    h3{font-size:22px}
+    p{margin:0}
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      color:var(--purple);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+    }
+    .button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(52,23,77,.16)}
+    .button-primary{background:var(--purple);color:#fff}
+    .button-secondary{background:#fff;color:var(--purple-dark);border-color:rgba(52,23,77,.18)}
+
+    .section{padding:86px 0;background:var(--ivory)}
+    .section.white{background:#fff}
+    .section.alt{background:var(--warm)}
+    .section-heading{max-width:830px;margin-bottom:40px}
+    .section-heading p{margin-top:16px;font-size:18px;color:var(--muted)}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      min-height:580px;
+      display:flex;
+      align-items:center;
+      background:
+        radial-gradient(circle at 81% 27%,rgba(167,216,213,.22),transparent 34%),
+        radial-gradient(circle at 16% 88%,rgba(153,102,203,.06),transparent 32%),
+        #FCFBF7;
+      border-bottom:1px solid rgba(52,23,77,.10);
+    }
+    .hero-art{
+      position:absolute;
+      inset:0;
+      background-image:url("Green Circle 2.png");
+      background-size:auto 135%;
+      background-position:center right 15px;
+      background-repeat:no-repeat;
+      opacity:.78;
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,#FCFBF7 0%,rgba(252,251,247,.99) 43%,rgba(252,251,247,.48) 72%,rgba(252,251,247,0) 100%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:minmax(0,1.14fr) minmax(300px,.72fr);
+      gap:60px;
+      align-items:center;
+      padding:88px 0;
+    }
+    .hero-copy p{
+      max-width:650px;
+      margin-top:24px;
+      font-size:20px;
+      color:#514B56;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-card{
+      position:relative;
+      padding:34px;
+      border-radius:var(--radius-lg);
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(52,23,77,.10);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .hero-card h3{font-size:28px}
+    .hero-card p{margin-top:14px;color:var(--muted)}
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:52px;height:52px;
+      right:-16px;top:-16px;
+      border-radius:50%;
+      background:var(--teal);
+      box-shadow:0 12px 26px rgba(27,125,121,.25);
+    }
+    .hero-card::after{
+      content:"○";
+      position:absolute;
+      right:1px;top:-6px;
+      color:#fff;
+      font-size:25px;
+      font-weight:700;
+    }
+
+    /* Featured */
+    .featured-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) repeat(2,minmax(250px,.72fr));
+      gap:22px;
+      align-items:stretch;
+    }
+    .feature-card,.resource-card,.related-card{
+      display:flex;
+      flex-direction:column;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-soft);
+    }
+    .feature-card{
+      min-height:420px;
+      padding:36px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(255,255,255,.12),transparent 28%),
+        linear-gradient(145deg,#2A1244,#5D2D78);
+      overflow:hidden;
+      position:relative;
+    }
+    .feature-card::after{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;
+      right:-95px;bottom:-95px;
+      border:1px solid rgba(167,216,213,.38);
+      border-radius:50%;
+      box-shadow:
+        0 0 0 30px rgba(167,216,213,.11),
+        0 0 0 60px rgba(167,216,213,.08);
+    }
+    .feature-card > *{position:relative;z-index:1}
+    .feature-card .eyebrow{color:#DABCF2}
+    .feature-card h3{color:#fff;font-size:clamp(30px,3vw,38px)}
+    .feature-card p{margin:18px 0 30px;color:rgba(255,255,255,.80);font-size:17px}
+    .feature-card .button{margin-top:auto;align-self:flex-start;background:#fff;color:var(--purple-dark)}
+
+    .resource-card{
+      min-height:420px;
+      padding:30px;
+      background:#fff;
+      border:1px solid var(--border);
+    }
+    .resource-card p{margin:14px 0 24px;color:var(--muted)}
+    .resource-card .text-link{margin-top:auto}
+    .coming-soon{
+      background:
+        radial-gradient(circle at 88% 15%,rgba(167,216,213,.22),transparent 28%),
+        #fff;
+    }
+
+    .text-link{
+      margin-top:auto;
+      font-weight:800;
+      text-decoration:none;
+      color:var(--purple);
+    }
+
+    /* Framework */
+    .framework-intro{
+      display:grid;
+      grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+      gap:58px;
+      align-items:start;
+      margin-bottom:42px;
+    }
+    .framework-intro p{font-size:18px;color:var(--muted)}
+    .framework-grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:16px;
+    }
+    .framework-card{
+      min-height:265px;
+      padding:24px;
+      border-radius:var(--radius-lg);
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-soft);
+    }
+    .framework-number{
+      display:grid;
+      place-items:center;
+      width:38px;height:38px;
+      margin-bottom:24px;
+      border-radius:50%;
+      color:var(--teal);
+      background:rgba(27,125,121,.11);
+      font-weight:800;
+    }
+    .framework-card h3{font-size:20px}
+    .framework-card p{margin-top:12px;color:var(--muted);font-size:15px}
+
+    /* Execution gap */
+    .gap-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .gap-card{
+      min-height:320px;
+      padding:30px;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-soft);
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .gap-card:nth-child(2){
+      color:#fff;
+      background:var(--navy);
+      border-color:transparent;
+    }
+    .gap-card:nth-child(2) h3{color:#fff}
+    .gap-card:nth-child(2) .eyebrow{color:#DABCF2}
+    .gap-card:nth-child(2) p{color:rgba(255,255,255,.76)}
+    .gap-card p{margin-top:15px;color:var(--muted)}
+
+    /* Clinical evidence */
+    .evidence-band{
+      position:relative;
+      overflow:hidden;
+      padding:88px 0;
+      background:
+        radial-gradient(circle at 15% 15%,rgba(153,102,203,.24),transparent 30%),
+        var(--navy);
+      color:#fff;
+    }
+    .evidence-band h2{color:#fff}
+    .evidence-band .eyebrow{color:#DABCF2}
+    .evidence-band .section-heading p{color:rgba(255,255,255,.76)}
+    .evidence-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .evidence-card{
+      display:flex;
+      flex-direction:column;
+      min-height:330px;
+      padding:30px;
+      border-radius:var(--radius-lg);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(7px);
+    }
+    .evidence-card h3{color:#fff}
+    .evidence-card p{margin:14px 0 24px;color:rgba(255,255,255,.74)}
+    .evidence-card .text-link{color:#fff}
+
+    /* Related */
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .related-card{
+      min-height:300px;
+      padding:28px;
+      background:#fff;
+      border:1px solid var(--border);
+    }
+    .related-card p{margin:14px 0 24px;color:var(--muted)}
+
+    /* Final CTA */
+    .final-cta{
+      position:relative;
+      overflow:hidden;
+      padding:92px 0;
+      text-align:center;
+      color:#fff;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(153,102,203,.22),transparent 30%),
+        var(--purple-dark);
+    }
+    .final-cta h2{color:#fff}
+    .final-cta p{max-width:800px;margin:18px auto 28px;color:rgba(255,255,255,.80);font-size:18px}
+
+    footer{padding:42px 0;background:#251036;color:rgba(255,255,255,.68);font-size:14px}
+    .footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center;flex-wrap:wrap}
+
+    @media(max-width:1050px){
+      .featured-grid{grid-template-columns:1fr 1fr}
+      .feature-card{grid-column:1/-1}
+      .framework-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media(max-width:900px){
+      .nav-links a:not(.button){display:none}
+      .hero-grid,.framework-intro{grid-template-columns:1fr}
+      .hero-card{max-width:620px}
+      .gap-grid,.evidence-grid,.related-grid{grid-template-columns:1fr}
+      .framework-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:680px){
+      .container{width:min(100% - 28px,var(--max))}
+      h1{font-size:43px}
+      .logo-img{height:40px}
+      .section{padding:66px 0}
+      .hero-grid{padding:72px 0}
+      .hero-art{opacity:.32;background-size:auto 105%;background-position:center right -250px}
+      .hero::after{background:linear-gradient(90deg,#FCFBF7 0%,rgba(252,251,247,.95) 68%,rgba(252,251,247,.45) 100%)}
+      .featured-grid,.framework-grid{grid-template-columns:1fr}
+      .feature-card,.resource-card{min-height:auto}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html" aria-label="ISHI Health">
+        <img src="ISHI Logo.svg" alt="ISHI Health" class="logo-img">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#">For Patients</a>
+        <a href="#">For Clinical Partners</a>
+        <a href="resources-polished-final.html">Resource Center</a>
+        <a href="#">About ISHI</a>
+        <a href="#">Log In</a>
+        <a class="button button-primary" href="https://www.ishi.health/contact-us">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">ASM Resource Center</span>
+          <h1>Ambulatory Specialty Model</h1>
+          <p>Educational resources designed to help healthcare organizations understand, evaluate, and implement a care delivery model built for what happens between visits.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#featured-resources">Explore Featured Resources</a>
+            <a class="button button-secondary" href="ishi-clinical-evidence-landing-page.html">View Clinical Evidence</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <span class="eyebrow">Core Idea</span>
+          <h3>Specialty care does not end when the visit does.</h3>
+          <p>ASM creates the operational framework for executing specialty care plans consistently between visits.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section" id="featured-resources">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Featured ASM Resources</span>
+          <h2>Featured ASM Resources</h2>
+          <p>Explore the foundational resources that explain the Ambulatory Specialty Model, answer common implementation questions, and provide practical guidance for healthcare organizations.</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="feature-card">
+            <span class="eyebrow">Foundational Article</span>
+            <h3>Specialty Care Was Never Designed for What Happens Between Visits</h3>
+            <p>Learn why traditional specialty care breaks down between visits and how the Ambulatory Specialty Model creates a more consistent, scalable approach to managing complex patient populations.</p>
+            <a class="button" href="What is ASM v3.html">Read Article</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="eyebrow">ASM FAQ</span>
+            <h3>Common Questions About ASM</h3>
+            <p>Answers to common questions about implementation, staffing, workflows, technology, and outcomes.</p>
+            <a class="text-link" href="ishi-asm-resource-center-faqs-v2.html">View FAQ →</a>
+          </article>
+
+          <article class="resource-card coming-soon">
+            <span class="eyebrow">Coming Soon</span>
+            <h3>Practice Readiness Assessment</h3>
+            <p>A practical tool to help organizations evaluate readiness for implementing ASM across specialty populations.</p>
+            <a class="text-link" href="resources-polished-final.html">Explore Resource Center →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRAMEWORK -->
+    <section class="section alt">
+      <div class="container">
+        <div class="framework-intro">
+          <div>
+            <span class="eyebrow">ASM Framework</span>
+            <h2>How ASM helps practices execute care between visits</h2>
+          </div>
+          <p>The Ambulatory Specialty Model combines clinical oversight, multidisciplinary care teams, monitoring, structured workflows, and patient engagement into a coordinated model for continuous specialty care.</p>
+        </div>
+
+        <div class="framework-grid">
+          <article class="framework-card">
+            <div class="framework-number">1</div>
+            <h3>Specialty Clinical Oversight</h3>
+            <p>Physicians maintain clinical decision-making while extending their reach beyond the office.</p>
+          </article>
+          <article class="framework-card">
+            <div class="framework-number">2</div>
+            <h3>Multidisciplinary Care Teams</h3>
+            <p>Nurses, pharmacists, APPs, and care coordinators help execute care plans at scale.</p>
+          </article>
+          <article class="framework-card">
+            <div class="framework-number">3</div>
+            <h3>Technology-Enabled Monitoring</h3>
+            <p>Patient data is transformed into actionable clinical insight.</p>
+          </article>
+          <article class="framework-card">
+            <div class="framework-number">4</div>
+            <h3>Structured Clinical Workflows</h3>
+            <p>Evidence-based protocols support consistent intervention, escalation, and follow-up.</p>
+          </article>
+          <article class="framework-card">
+            <div class="framework-number">5</div>
+            <h3>Continuous Patient Engagement</h3>
+            <p>Patients remain connected to their care team between visits, not just during them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTION GAP -->
+    <section class="section white">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">What ASM Helps Solve</span>
+          <h2>Closing the execution gap in specialty care</h2>
+          <p>ASM is designed for the gap between clinical intent and clinical reality, where treatment plans often stall, patients disengage, and care teams struggle to keep up.</p>
+        </div>
+
+        <div class="gap-grid">
+          <article class="gap-card">
+            <span class="eyebrow">Problem</span>
+            <h3>Patients fall through the cracks between visits.</h3>
+            <p>Medication titration is delayed. Symptoms go unaddressed. Patients disengage. Care remains episodic rather than proactive.</p>
+          </article>
+          <article class="gap-card">
+            <span class="eyebrow">Model</span>
+            <h3>Care plans are actively executed.</h3>
+            <p>ASM brings together monitoring, care teams, protocols, and clinical oversight to help ensure treatment plans are carried out consistently.</p>
+          </article>
+          <article class="gap-card">
+            <span class="eyebrow">Impact</span>
+            <h3>Specialty care extends beyond the clinic.</h3>
+            <p>Practices can support complex patients more proactively without relying solely on in-person encounters or already constrained care teams.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLINICAL EVIDENCE -->
+    <section class="evidence-band">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Clinical Evidence</span>
+          <h2>ASM in cardiovascular care</h2>
+          <p>ISHI applies the Ambulatory Specialty Model to cardiovascular care by combining cardiologist-led oversight, heart failure expertise, remote monitoring, and structured clinical workflows.</p>
+        </div>
+
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span class="eyebrow">Evidence Brief</span>
+            <h3>Transforming Heart Failure Care Through Active Clinical Management Between Visits</h3>
+            <p>Explore the clinical rationale behind active management and structured care delivery between visits.</p>
+            <a class="text-link" href="ishi-clinical-evidence-brief.html">Read Evidence Brief →</a>
+          </article>
+
+          <article class="evidence-card">
+            <span class="eyebrow">Case Study</span>
+            <h3>Executing Heart Failure Care Between Visits</h3>
+            <p>Review real-world outcomes from 747 heart failure patients supported through protocol-driven virtual care delivery.</p>
+            <a class="text-link" href="ishi-heart-failure-case-study-page.html">Read Case Study →</a>
+          </article>
+
+          <article class="evidence-card">
+            <span class="eyebrow">Clinical Evidence</span>
+            <h3>Explore Outcomes and Resources</h3>
+            <p>Review evidence, outcomes, and practical resources supporting active specialty care management.</p>
+            <a class="text-link" href="ishi-clinical-evidence-landing-page.html">Explore Evidence →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Related Resources</span>
+          <h2>Continue exploring specialty care execution</h2>
+          <p>Explore additional thought leadership, clinical evidence, and practical resources supporting the future of specialty care.</p>
+        </div>
+
+        <div class="related-grid">
+          <article class="related-card">
+            <span class="eyebrow">Insights</span>
+            <h3>The Prescription Was Written. Why Didn’t the Patient Start Therapy?</h3>
+            <p>The gap between clinical intent and clinical reality remains one of the largest opportunities in cardiovascular care.</p>
+            <a class="text-link" href="ishi-insights-prescription-start-therapy.html">Read Article →</a>
+          </article>
+
+          <article class="related-card">
+            <span class="eyebrow">Clinical Evidence</span>
+            <h3>Clinical Evidence Brief</h3>
+            <p>Explore the care model and clinical rationale behind active management between visits.</p>
+            <a class="text-link" href="ishi-clinical-evidence-brief.html">Read Evidence Brief →</a>
+          </article>
+
+          <article class="related-card">
+            <span class="eyebrow">Resource Center</span>
+            <h3>Explore All Resources</h3>
+            <p>Browse ASM education, clinical evidence, case studies, and insights from the complete ISHI Resource Center.</p>
+            <a class="text-link" href="resources-polished-final.html">Resource Center →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Ready to See ASM in Practice?</h2>
+        <p>Explore the clinical evidence and real-world outcomes demonstrating how the Ambulatory Specialty Model supports active heart failure management between visits.</p>
+        <a class="button button-primary" href="ishi-clinical-evidence-landing-page.html">View Clinical Evidence</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 ISHI Health. All rights reserved.</span>
+      <span>Specialty care between visits.</span>
+    </div>
+  </footer>
+</body>
+</html>
